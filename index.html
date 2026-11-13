@@ -229,8 +229,7 @@
         @media(max-width:820px) {
             .menu-btn {
                 display: block;
-                margin-left: auto;
-                margin-right: -.5rem
+                margin-inline-end: -.5rem
             }
 
             nav ul {
@@ -247,6 +246,14 @@
                 max-height: calc(100vh - 68px);
                 max-height: calc(100dvh - 68px);
                 overflow-y: auto
+            }
+
+            nav {
+                margin-inline-start: 0
+            }
+
+            .lang {
+                margin-inline-start: auto
             }
 
             nav ul.open {
@@ -310,7 +317,7 @@
             border-radius: 28px;
             padding: 2rem;
             text-align: center;
-            box-shadow: 10px 10px 0 var(--w)
+            box-shadow: var(--sx, 10px) 10px 0 var(--w)
         }
 
         .hero-card img {
@@ -438,8 +445,9 @@
         }
 
         .why div {
-            border-left: 4px solid var(--y);
-            padding: .2rem 0 .2rem 1.1rem
+            border-inline-start: 4px solid var(--y);
+            padding: .2rem 0;
+            padding-inline-start: 1.1rem
         }
 
         .why b {
@@ -598,6 +606,140 @@
                 animation: none
             }
         }
+
+        /* Dil seçici */
+        .lang {
+            position: relative
+        }
+
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: transparent;
+            color: var(--y);
+            border: 2px solid var(--y);
+            border-radius: 99px;
+            padding: .35rem .8rem;
+            font: inherit;
+            font-weight: 700;
+            font-size: .9rem;
+            min-height: 40px;
+            cursor: pointer;
+            transition: background-color .25s ease, color .25s ease
+        }
+
+        .lang-btn:hover,
+        .lang-btn[aria-expanded="true"] {
+            background: var(--y);
+            color: var(--k)
+        }
+
+        .lang-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .lang-menu {
+            position: absolute;
+            inset-inline-end: 0;
+            top: calc(100% + 10px);
+            list-style: none;
+            background: var(--k);
+            border: 2px solid var(--y);
+            border-radius: 14px;
+            padding: .35rem;
+            min-width: 150px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, .45);
+            z-index: 70
+        }
+
+        .lang-menu[hidden] {
+            display: none
+        }
+
+        .lang-menu button {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            gap: .6rem;
+            background: none;
+            border: 0;
+            color: var(--w);
+            font: inherit;
+            font-weight: 600;
+            padding: .6rem .8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: start
+        }
+
+        .lang-menu button:hover {
+            background: #222;
+            color: var(--y)
+        }
+
+        .lang-menu button[aria-selected="true"] {
+            color: var(--y)
+        }
+
+        .lang-menu button[aria-selected="true"]::after {
+            content: "✓"
+        }
+
+        header a:focus-visible,
+        header button:focus-visible {
+            outline-color: var(--y)
+        }
+
+        @media(min-width:821px) {
+            nav {
+                margin-inline-start: auto
+            }
+
+            .lang {
+                margin-inline-start: 1.2rem
+            }
+        }
+
+        @media(max-width:400px) {
+            .brand {
+                font-size: .92rem;
+                gap: .5rem
+            }
+
+            .lang-btn {
+                padding: .35rem .6rem
+            }
+
+            .lang-btn .chev {
+                display: none
+            }
+        }
+
+        /* Arapça (RTL) */
+        [dir="rtl"] h1,
+        [dir="rtl"] h2,
+        [dir="rtl"] h3 {
+            letter-spacing: 0;
+            line-height: 1.4
+        }
+
+        [dir="rtl"] .tag,
+        [dir="rtl"] .info h3 {
+            letter-spacing: 0;
+            text-transform: none
+        }
+
+        [dir="rtl"] .hero-card {
+            --sx: -10px
+        }
     </style>
 </head>
 
@@ -610,15 +752,38 @@
                     width="44" height="44" alt="Fatih Veteriner Kliniği logosu">
                 <div>Fatih <span>Veteriner</span></div>
             </a>
-            <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" id="mb">☰</button>
+
             <nav aria-label="Ana menü">
                 <ul id="menu">
-                    <li><a href="#hizmetler">Hizmetler</a></li>
-                    <li><a href="#neden">Neden Biz?</a></li>
-                    <li><a href="#iletisim">İletişim</a></li>
-                    <li><a class="btn btn-y btn-sm" href="tel:+902125321514"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Ara</a></li>
+                    <li><a href="#hizmetler" data-i18n="nav_services">Hizmetler</a></li>
+                    <li><a href="#neden" data-i18n="nav_why">Neden Biz?</a></li>
+                    <li><a href="#iletisim" data-i18n="nav_contact">İletişim</a></li>
+                    <li><a class="btn btn-y btn-sm" href="tel:+902125321514"><svg viewBox="0 0 24 24"
+                                aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg><span data-i18n="nav_call">Ara</span></a></li>
                 </ul>
             </nav>
+            <div class="lang">
+                <button class="lang-btn" id="langBtn" type="button" aria-haspopup="listbox" aria-expanded="false"
+                    aria-label="Language">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg><span id="langCur">TR</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </button>
+                <ul class="lang-menu" id="langMenu" role="listbox" hidden>
+                    <li><button type="button" role="option" data-l="tr" lang="tr">Türkçe</button></li>
+                    <li><button type="button" role="option" data-l="en" lang="en">English</button></li>
+                    <li><button type="button" role="option" data-l="ar" lang="ar">العربية</button></li>
+                </ul>
+            </div>
+            <button class="menu-btn" aria-label="Menüyü aç" aria-expanded="false" id="mb">☰</button>
         </div>
     </header>
 
@@ -626,61 +791,68 @@
         <section class="hero">
             <div class="wrap">
                 <div>
-                    <span class="tag">İskenderpaşa · Fatih / İstanbul</span>
-                    <h1>Dostunuz için güvenilir ve şefkatli bakım.</h1>
-                    <p>Kedi, köpek ve diğer evcil dostlarınızın sağlığı için muayeneden aşıya, koruyucu hekimlikten
-                        cerrahiye kadar yanınızdayız.</p>
+                    <span class="tag" data-i18n="h_tag">İskenderpaşa · Fatih / İstanbul</span>
+                    <h1 data-i18n="h_h1">Dostunuz için güvenilir ve şefkatli bakım.</h1>
+                    <p data-i18n="h_p">Kedi, köpek ve diğer evcil dostlarınızın sağlığı için muayeneden aşıya, koruyucu
+                        hekimlikten cerrahiye kadar yanınızdayız.</p>
                     <div class="cta">
-                        <a class="btn btn-dark" href="tel:+902125321514"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Hemen Ara</a>
+                        <a class="btn btn-dark" href="tel:+902125321514"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg><span data-i18n="btn_call">Hemen Ara</span></a>
                         <a class="btn btn-light"
                             href="https://wa.me/905415321514?text=Merhaba%2C%20randevu%20almak%20istiyorum."
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp'tan Yaz</a>
+                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+                            </svg><span data-i18n="btn_wa">WhatsApp'tan Yaz</span></a>
                     </div>
                 </div>
                 <div class="hero-card">
                     <img src="https://lh3.googleusercontent.com/a-/ALV-UjXFVFKiS5RWSJAGHi7zADtqoSR7lgb4ey6p6rqctsF8nOkTltYV=w256-h256-p-rp-mo-br100"
                         width="170" height="170" alt="Fatih Veteriner Kliniği">
-                    <strong>Fatih Veteriner Kliniği</strong>
-                    <small>Her gün 08:00 – 00:00</small>
+                    <strong data-i18n="h_name">Fatih Veteriner Kliniği</strong>
+                    <small data-i18n="hours">Her gün 08:00 – 00:00</small>
                 </div>
             </div>
         </section>
 
         <section id="hizmetler">
             <div class="wrap">
-                <span class="tag">Hizmetlerimiz</span>
-                <h2>Evcil dostunuzun ihtiyacı olan her şey</h2>
-                <p class="lead">Rutin kontrollerden acil müdahalelere kadar tüm süreçte yanınızdayız.</p>
+                <span class="tag" data-i18n="s_tag">Hizmetlerimiz</span>
+                <h2 data-i18n="s_h2">Evcil dostunuzun ihtiyacı olan her şey</h2>
+                <p class="lead" data-i18n="s_lead">Rutin kontrollerden acil müdahalelere kadar tüm süreçte yanınızdayız.
+                </p>
                 <div class="grid">
                     <article class="card">
                         <div class="ico">🩺</div>
-                        <h3>Genel Muayene</h3>
-                        <p>Düzenli sağlık kontrolleri ve erken teşhisle sorunları büyümeden yakalıyoruz.</p>
+                        <h3 data-i18n="c1_t">Genel Muayene</h3>
+                        <p data-i18n="c1_p">Düzenli sağlık kontrolleri ve erken teşhisle sorunları büyümeden
+                            yakalıyoruz.</p>
                     </article>
                     <article class="card">
                         <div class="ico">💉</div>
-                        <h3>Aşı & Koruyucu Hekimlik</h3>
-                        <p>Aşı takvimi, iç-dış parazit uygulamaları ve mikroçip hizmeti.</p>
+                        <h3 data-i18n="c2_t">Aşı & Koruyucu Hekimlik</h3>
+                        <p data-i18n="c2_p">Aşı takvimi, iç-dış parazit uygulamaları ve mikroçip hizmeti.</p>
                     </article>
                     <article class="card">
                         <div class="ico">🔬</div>
-                        <h3>Laboratuvar & Teşhis</h3>
-                        <p>Kan ve idrar tahlilleri ile doğru teşhise hızlı ulaşım.</p>
+                        <h3 data-i18n="c3_t">Laboratuvar & Teşhis</h3>
+                        <p data-i18n="c3_p">Kan ve idrar tahlilleri ile doğru teşhise hızlı ulaşım.</p>
                     </article>
                     <article class="card">
                         <div class="ico">🏥</div>
-                        <h3>Cerrahi & Tedavi</h3>
-                        <p>Kısırlaştırma ve genel cerrahi operasyonlar, tedavi sonrası takip.</p>
+                        <h3 data-i18n="c4_t">Cerrahi & Tedavi</h3>
+                        <p data-i18n="c4_p">Kısırlaştırma ve genel cerrahi operasyonlar, tedavi sonrası takip.</p>
                     </article>
                     <article class="card">
                         <div class="ico">🦷</div>
-                        <h3>Ağız & Diş Sağlığı</h3>
-                        <p>Diş taşı temizliği ve ağız bakımı ile sağlıklı bir gülüş.</p>
+                        <h3 data-i18n="c5_t">Ağız & Diş Sağlığı</h3>
+                        <p data-i18n="c5_p">Diş taşı temizliği ve ağız bakımı ile sağlıklı bir gülüş.</p>
                     </article>
                     <article class="card">
                         <div class="ico">🥣</div>
-                        <h3>Beslenme Danışmanlığı</h3>
-                        <p>Yaşa ve ırka uygun beslenme planı için uzman önerileri.</p>
+                        <h3 data-i18n="c6_t">Beslenme Danışmanlığı</h3>
+                        <p data-i18n="c6_p">Yaşa ve ırka uygun beslenme planı için uzman önerileri.</p>
                     </article>
                 </div>
             </div>
@@ -688,22 +860,22 @@
 
         <section id="neden">
             <div class="wrap">
-                <span class="tag" style="background:var(--y);color:var(--k)">Neden Biz?</span>
-                <h2>Sağlıklı patiler, <span>mutlu aileler.</span></h2>
-                <p class="lead">Her patili dostumuza kendi ailemizin bir üyesi gibi yaklaşır, sahiplerini sürecin her aşamasında bilgilendiririz.
-                </p>
+                <span class="tag" style="background:var(--y);color:var(--k)" data-i18n="nav_why">Neden Biz?</span>
+                <h2 data-i18n="w_h2">Sağlıklı patiler, <span>mutlu aileler.</span></h2>
+                <p class="lead" data-i18n="w_lead">Her patili dostumuza kendi ailemizin bir üyesi gibi yaklaşır,
+                    sahiplerini sürecin her aşamasında bilgilendiririz.</p>
                 <div class="why">
-                    <div><b>Şefkatli yaklaşım</b>
-                        <p>Stressiz, sakin ve sevgi dolu bir muayene ortamı.</p>
+                    <div><b data-i18n="w1_t">Şefkatli yaklaşım</b>
+                        <p data-i18n="w1_p">Stressiz, sakin ve sevgi dolu bir muayene ortamı.</p>
                     </div>
-                    <div><b>Net iletişim</b>
-                        <p>Teşhis ve tedavi sürecini sade bir dille anlatırız.</p>
+                    <div><b data-i18n="w2_t">Net iletişim</b>
+                        <p data-i18n="w2_p">Teşhis ve tedavi sürecini sade bir dille anlatırız.</p>
                     </div>
-                    <div><b>Kolay ulaşım</b>
-                        <p>Fatih İskenderpaşa'da merkezi konum.</p>
+                    <div><b data-i18n="w3_t">Kolay ulaşım</b>
+                        <p data-i18n="w3_p">Fatih İskenderpaşa'da merkezi konum.</p>
                     </div>
-                    <div><b>Hızlı randevu</b>
-                        <p>Telefon veya WhatsApp ile saniyeler içinde ulaşın.</p>
+                    <div><b data-i18n="w4_t">Hızlı randevu</b>
+                        <p data-i18n="w4_p">Telefon veya WhatsApp ile saniyeler içinde ulaşın.</p>
                     </div>
                 </div>
             </div>
@@ -711,29 +883,34 @@
 
         <section id="iletisim">
             <div class="wrap">
-                <span class="tag">İletişim</span>
-                <h2>Bize ulaşın</h2>
-                <p class="lead">Randevu ve sorularınız için arayın ya da WhatsApp'tan yazın.</p>
+                <span class="tag" data-i18n="nav_contact">İletişim</span>
+                <h2 data-i18n="c_h2">Bize ulaşın</h2>
+                <p class="lead" data-i18n="c_lead">Randevu ve sorularınız için arayın ya da WhatsApp'tan yazın.</p>
                 <div class="contact">
                     <div class="info">
                         <div>
-                            <h3>Adres</h3>
-                            <p>İskenderpaşa Mh. Macar Kardeşler Cd. No: 15<br>34083 Fatih / İstanbul</p>
+                            <h3 data-i18n="lbl_addr">Adres</h3>
+                            <p data-i18n="addr">İskenderpaşa Mh. Macar Kardeşler Cd. No: 15<br>34083 Fatih / İstanbul
+                            </p>
                         </div>
                         <div>
-                            <h3>Telefon</h3><a href="tel:+902125321514">+90 (212) 532 15 14</a>
+                            <h3 data-i18n="lbl_phone">Telefon</h3><a href="tel:+902125321514"><span dir="ltr">+90 (212)
+                                    532 15 14</span></a>
                         </div>
                         <div>
-                            <h3>WhatsApp</h3><a href="https://wa.me/905415321514" target="_blank" rel="noopener">+90 541
-                                532 15 14</a>
+                            <h3>WhatsApp</h3><a href="https://wa.me/905415321514" target="_blank" rel="noopener"><span
+                                    dir="ltr">+90 541 532 15 14</span></a>
                         </div>
                         <div>
-                            <h3>Çalışma Saatleri</h3>
-                            <p>Her gün 08:00 – 00:00</p>
+                            <h3 data-i18n="lbl_hours">Çalışma Saatleri</h3>
+                            <p data-i18n="hours">Her gün 08:00 – 00:00</p>
                         </div>
                         <a class="btn btn-dark"
                             href="https://www.google.com/maps/dir/?api=1&destination=41.0157283,28.9521364"
-                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Yol Tarifi Al</a>
+                            target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg><span data-i18n="btn_dir">Yol Tarifi Al</span></a>
                     </div>
                     <div class="map">
                         <iframe title="Fatih Veteriner Kliniği konumu" loading="lazy"
@@ -749,8 +926,8 @@
         <div class="wrap">
             <img src="https://lh3.googleusercontent.com/a-/ALV-UjXFVFKiS5RWSJAGHi7zADtqoSR7lgb4ey6p6rqctsF8nOkTltYV=w72-h72-p-rp-mo-br100"
                 width="48" height="48" alt="">
-            <p>© <span id="yr">2026</span> Fatih Veteriner Kliniği · İskenderpaşa, Fatih / İstanbul</p>
-            <p><a href="tel:+902125321514">+90 (212) 532 15 14</a></p>
+            <p data-i18n="foot">© <span id="yr">2026</span> Fatih Veteriner Kliniği · İskenderpaşa, Fatih / İstanbul</p>
+            <p><a href="tel:+902125321514"><span dir="ltr">+90 (212) 532 15 14</span></a></p>
         </div>
     </footer>
 
@@ -766,7 +943,52 @@
         var mb = document.getElementById('mb'), m = document.getElementById('menu');
         mb.addEventListener('click', function () { var o = m.classList.toggle('open'); mb.setAttribute('aria-expanded', o); mb.textContent = o ? '✕' : '☰' });
         m.addEventListener('click', function (e) { if (e.target.tagName === 'A') { m.classList.remove('open'); mb.textContent = '☰'; mb.setAttribute('aria-expanded', 'false') } });
-        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        /* Dil desteği: TR (varsayılan) / EN / AR */
+        (function () {
+            var EN = { "nav_services": "Services", "nav_why": "Why Us?", "nav_contact": "Contact", "nav_call": "Call", "h_tag": "İskenderpaşa · Fatih / Istanbul", "h_h1": "Trusted and compassionate care for your best friend.", "h_p": "From check-ups and vaccinations to preventive care and surgery, we're here for the health of your cat, dog and other pets.", "btn_call": "Call Now", "btn_wa": "Message on WhatsApp", "h_name": "Fatih Veterinary Clinic", "hours": "Every day 08:00 – 00:00", "s_tag": "Our Services", "s_h2": "Everything your pet needs", "s_lead": "From routine check-ups to urgent care, we're with you every step of the way.", "c1_t": "General Check-up", "c1_p": "Regular health check-ups and early diagnosis catch problems before they grow.", "c2_t": "Vaccination & Preventive Care", "c2_p": "Vaccination schedules, internal and external parasite treatments, and microchipping.", "c3_t": "Laboratory & Diagnostics", "c3_p": "Blood and urine tests for fast, accurate diagnosis.", "c4_t": "Surgery & Treatment", "c4_p": "Neutering and general surgical procedures, with follow-up care after treatment.", "c5_t": "Oral & Dental Health", "c5_p": "Tartar cleaning and oral care for a healthy smile.", "c6_t": "Nutrition Advice", "c6_p": "Expert recommendations for a diet plan suited to your pet's age and breed.", "w_h2": "Healthy paws, <span>happy families.</span>", "w_lead": "We treat every furry friend like a member of our own family and keep owners informed at every stage.", "w1_t": "Caring approach", "w1_p": "A calm, stress-free and loving examination environment.", "w2_t": "Clear communication", "w2_p": "We explain diagnosis and treatment in plain language.", "w3_t": "Easy to reach", "w3_p": "Centrally located in İskenderpaşa, Fatih.", "w4_t": "Quick appointments", "w4_p": "Reach us in seconds by phone or WhatsApp.", "c_h2": "Get in touch", "c_lead": "Call us or message us on WhatsApp for appointments and questions.", "lbl_addr": "Address", "addr": "İskenderpaşa Mah. Macar Kardeşler Cad. No: 15<br>34083 Fatih / Istanbul", "lbl_phone": "Phone", "lbl_hours": "Opening Hours", "btn_dir": "Get Directions", "foot": "© <span id=\"yr\"></span> Fatih Veterinary Clinic · İskenderpaşa, Fatih / Istanbul" }, AR = { "nav_services": "الخدمات", "nav_why": "لماذا نحن؟", "nav_contact": "تواصل معنا", "nav_call": "اتصل", "h_tag": "إسكندر باشا · الفاتح / إسطنبول", "h_h1": "رعاية موثوقة وحنونة لصديقك المفضل.", "h_p": "من الفحص واللقاحات إلى الطب الوقائي والجراحة، نحن بجانبكم للعناية بصحة قطتكم وكلبكم وسائر حيواناتكم الأليفة.", "btn_call": "اتصل الآن", "btn_wa": "راسلنا عبر واتساب", "h_name": "عيادة فاتح البيطرية", "hours": "يوميًا من 08:00 إلى 00:00", "s_tag": "خدماتنا", "s_h2": "كل ما يحتاجه حيوانك الأليف", "s_lead": "من الفحوصات الدورية إلى التدخلات العاجلة، نحن معكم في كل خطوة.", "c1_t": "فحص عام", "c1_p": "فحوصات صحية دورية وتشخيص مبكر لاكتشاف المشكلات قبل أن تتفاقم.", "c2_t": "اللقاحات والطب الوقائي", "c2_p": "جداول التطعيم، وعلاجات الطفيليات الداخلية والخارجية، وزراعة الشريحة الإلكترونية.", "c3_t": "المختبر والتشخيص", "c3_p": "تحاليل الدم والبول للوصول إلى التشخيص الصحيح بسرعة.", "c4_t": "الجراحة والعلاج", "c4_p": "عمليات التعقيم والجراحات العامة مع المتابعة بعد العلاج.", "c5_t": "صحة الفم والأسنان", "c5_p": "إزالة الجير والعناية بالفم لابتسامة صحية.", "c6_t": "استشارات التغذية", "c6_p": "توصيات الخبراء لنظام غذائي يناسب عمر حيوانك وسلالته.", "w_h2": "حيوانات بصحة جيدة، <span>وعائلات سعيدة.</span>", "w_lead": "نعامل كل صديق صغير كأنه فرد من عائلتنا، ونُبقي أصحابه على اطلاع في كل مرحلة.", "w1_t": "رعاية حانية", "w1_p": "أجواء فحص هادئة ومريحة ومليئة بالحب.", "w2_t": "تواصل واضح", "w2_p": "نشرح التشخيص وخطة العلاج بلغة بسيطة.", "w3_t": "سهولة الوصول", "w3_p": "موقع مركزي في إسكندر باشا بمنطقة الفاتح.", "w4_t": "حجز سريع", "w4_p": "تواصلوا معنا في ثوانٍ عبر الهاتف أو واتساب.", "c_h2": "تواصلوا معنا", "c_lead": "اتصلوا بنا أو راسلونا عبر واتساب لحجز موعد أو لأي استفسار.", "lbl_addr": "العنوان", "addr": "حي İskenderpaşa، شارع Macar Kardeşler، رقم 15<br>34083 الفاتح / إسطنبول", "lbl_phone": "الهاتف", "lbl_hours": "ساعات العمل", "btn_dir": "احصل على الاتجاهات", "foot": "© <span id=\"yr\"></span> عيادة فاتح البيطرية · إسكندر باشا، الفاتح / إسطنبول" };
+            var ME = { "title": "Fatih Veterinary Clinic", "desc": "Fatih Veterinary Clinic: check-ups, vaccinations, surgery and preventive care for your cats, dogs and other pets. İskenderpaşa, Fatih / Istanbul. Call us or message us on WhatsApp.", "ogd": "Trusted veterinary care for your pets. İskenderpaşa, Fatih / Istanbul.", "brand": "Fatih Veterinary Clinic home", "menu": "Open menu", "navl": "Main menu", "wa": "Message us on WhatsApp", "logo": "Fatih Veterinary Clinic logo", "name2": "Fatih Veterinary Clinic", "map": "Location of Fatih Veterinary Clinic", "wa1": "Hello, I would like to make an appointment.", "wa2": "Hello, I would like some information." }, MA = { "title": "عيادة فاتح البيطرية", "desc": "عيادة فاتح البيطرية: فحص وتطعيم وجراحة ورعاية وقائية للقطط والكلاب وسائر الحيوانات الأليفة. إسكندر باشا، الفاتح / إسطنبول. اتصلوا بنا أو راسلونا عبر واتساب.", "ogd": "خدمة بيطرية موثوقة لحيواناتكم الأليفة. إسكندر باشا، الفاتح / إسطنبول.", "brand": "الصفحة الرئيسية لعيادة فاتح البيطرية", "menu": "افتح القائمة", "navl": "القائمة الرئيسية", "wa": "راسلنا عبر واتساب", "logo": "شعار عيادة فاتح البيطرية", "name2": "عيادة فاتح البيطرية", "map": "موقع عيادة فاتح البيطرية", "wa1": "مرحبًا، أود حجز موعد.", "wa2": "مرحبًا، أود الاستفسار." };
+            var els = document.querySelectorAll('[data-i18n]'), TR = {};
+            els.forEach(function (e) { TR[e.getAttribute('data-i18n')] = e.innerHTML; });
+            var attrs = [['.brand', 'aria-label', 'brand'], ['#mb', 'aria-label', 'menu'], ['nav', 'aria-label', 'navl'], ['.wa', 'aria-label', 'wa'], ['.brand img', 'alt', 'logo'], ['.hero-card img', 'alt', 'name2'], ['.map iframe', 'title', 'map']];
+            var mt = function (n) { var e = document.querySelector(n); return e ? e.getAttribute('content') : '' };
+            var MT = { title: document.title, desc: mt('meta[name="description"]'), ogd: mt('meta[property="og:description"]'), wa1: 'Merhaba, randevu almak istiyorum.', wa2: 'Merhaba, bilgi almak istiyorum.' };
+            attrs.forEach(function (a) { var e = document.querySelector(a[0]); MT[a[2]] = e ? e.getAttribute(a[1]) : '' });
+            var D = { tr: TR, en: EN, ar: AR }, M = { tr: MT, en: ME, ar: MA };
+            var map = document.querySelector('.map iframe'), mapBase = map.getAttribute('src').replace(/&hl=\w+/, '');
+            var btn = document.getElementById('langBtn'), menu = document.getElementById('langMenu'), cur = document.getElementById('langCur');
+
+            function setMeta(sel, v) { var e = document.querySelector(sel); if (e) e.setAttribute('content', v) }
+            function wa(msg) { return 'https://wa.me/905415321514?text=' + encodeURIComponent(msg) }
+
+            function setLang(l, save) {
+                if (!D[l]) l = 'tr';
+                var h = document.documentElement; h.lang = l; h.dir = l === 'ar' ? 'rtl' : 'ltr';
+                els.forEach(function (e) { e.innerHTML = D[l][e.getAttribute('data-i18n')] });
+                var y = document.getElementById('yr'); if (y) y.textContent = new Date().getFullYear();
+                var t = M[l];
+                document.title = t.title; setMeta('meta[name="description"]', t.desc); setMeta('meta[property="og:title"]', t.title); setMeta('meta[property="og:description"]', t.ogd);
+                attrs.forEach(function (a) { var e = document.querySelector(a[0]); if (e) e.setAttribute(a[1], t[a[2]]) });
+                document.querySelectorAll('.btn-light[href*="wa.me"]').forEach(function (e) { e.href = wa(t.wa1) });
+                document.querySelectorAll('.wa').forEach(function (e) { e.href = wa(t.wa2) });
+                var src = mapBase + '&hl=' + l; if (map.getAttribute('src') !== src) map.setAttribute('src', src);
+                cur.textContent = l.toUpperCase();
+                menu.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-selected', b.getAttribute('data-l') === l) });
+                if (save) { try { localStorage.setItem('lang', l) } catch (e) { } }
+            }
+            function toggle(open) { menu.hidden = !open; btn.setAttribute('aria-expanded', open) }
+
+            btn.addEventListener('click', function (e) { e.stopPropagation(); toggle(menu.hidden) });
+            menu.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) { setLang(b.getAttribute('data-l'), true); toggle(false); btn.focus() } });
+            document.addEventListener('click', function () { toggle(false) });
+            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') toggle(false) });
+
+            var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1], saved = null, nav = navigator.languages || [navigator.language || 'tr'];
+            try { saved = localStorage.getItem('lang') } catch (e) { }
+            var start = q || saved;
+            if (!start) { for (var i = 0; i < nav.length; i++) { var c = String(nav[i]).slice(0, 2).toLowerCase(); if (D[c]) { start = c; break } } }
+            setLang(start || 'tr', false);
+        })();
     </script>
 </body>
 
