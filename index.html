@@ -34,6 +34,7 @@
         }
 
         html {
+            font-size: 106.25%;
             scroll-behavior: smooth;
             scroll-padding-top: 76px
         }
@@ -195,7 +196,7 @@
         }
 
         .brand span {
-            color: var(--y)
+            color: inherit
         }
 
         nav ul {
@@ -312,32 +313,29 @@
         }
 
         .hero-card {
-            background: var(--k);
-            color: var(--w);
-            border-radius: 28px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: var(--sx, 10px) 10px 0 var(--w)
+            text-align: center
         }
 
         .hero-card img {
-            width: clamp(110px, 22vw, 170px);
+            width: clamp(200px, 40vw, 340px);
             height: auto;
             aspect-ratio: 1;
             border-radius: 50%;
-            margin: 0 auto 1rem;
-            border: 4px solid var(--y);
+            margin: 0 auto 1.2rem;
+            border: 4px solid var(--k);
             background: var(--w)
         }
 
-        .hero-card strong {
-            display: block;
-            color: var(--y);
-            font-size: 1.3rem
-        }
+
 
         .hero-card small {
-            opacity: .8
+            display: inline-block;
+            background: var(--k);
+            color: var(--y);
+            font-weight: 700;
+            font-size: .95rem;
+            padding: .45rem 1.1rem;
+            border-radius: 99px
         }
 
         @media(max-width:820px) {
@@ -736,10 +734,6 @@
             letter-spacing: 0;
             text-transform: none
         }
-
-        [dir="rtl"] .hero-card {
-            --sx: -10px
-        }
     </style>
 </head>
 
@@ -808,9 +802,8 @@
                     </div>
                 </div>
                 <div class="hero-card">
-                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjXFVFKiS5RWSJAGHi7zADtqoSR7lgb4ey6p6rqctsF8nOkTltYV=w256-h256-p-rp-mo-br100"
-                        width="170" height="170" alt="Fatih Veteriner Kliniği">
-                    <strong data-i18n="h_name">Fatih Veteriner Kliniği</strong>
+                    <img src="https://lh3.googleusercontent.com/a-/ALV-UjXFVFKiS5RWSJAGHi7zADtqoSR7lgb4ey6p6rqctsF8nOkTltYV=w512-h512-p-rp-mo-br100"
+                        width="340" height="340" alt="Fatih Veteriner Kliniği">
                     <small data-i18n="hours">Her gün 08:00 – 00:00</small>
                 </div>
             </div>
@@ -894,7 +887,7 @@
                             </p>
                         </div>
                         <div>
-                            <h3 data-i18n="lbl_phone">Telefon</h3><a href="tel:+902125321514"><span dir="ltr">+90 (212)
+                            <h3 data-i18n="lbl_phone">Telefon</h3><a href="tel:+902125321514"><span dir="ltr">+90 212
                                     532 15 14</span></a>
                         </div>
                         <div>
@@ -946,7 +939,7 @@
 
         /* Dil desteği: TR (varsayılan) / EN / AR */
         (function () {
-            var EN = { "nav_services": "Services", "nav_why": "Why Us?", "nav_contact": "Contact", "nav_call": "Call", "h_tag": "İskenderpaşa · Fatih / Istanbul", "h_h1": "Trusted and compassionate care for your best friend.", "h_p": "From check-ups and vaccinations to preventive care and surgery, we're here for the health of your cat, dog and other pets.", "btn_call": "Call Now", "btn_wa": "Message on WhatsApp", "h_name": "Fatih Veterinary Clinic", "hours": "Every day 08:00 – 00:00", "s_tag": "Our Services", "s_h2": "Everything your pet needs", "s_lead": "From routine check-ups to urgent care, we're with you every step of the way.", "c1_t": "General Check-up", "c1_p": "Regular health check-ups and early diagnosis catch problems before they grow.", "c2_t": "Vaccination & Preventive Care", "c2_p": "Vaccination schedules, internal and external parasite treatments, and microchipping.", "c3_t": "Laboratory & Diagnostics", "c3_p": "Blood and urine tests for fast, accurate diagnosis.", "c4_t": "Surgery & Treatment", "c4_p": "Neutering and general surgical procedures, with follow-up care after treatment.", "c5_t": "Oral & Dental Health", "c5_p": "Tartar cleaning and oral care for a healthy smile.", "c6_t": "Nutrition Advice", "c6_p": "Expert recommendations for a diet plan suited to your pet's age and breed.", "w_h2": "Healthy paws, <span>happy families.</span>", "w_lead": "We treat every furry friend like a member of our own family and keep owners informed at every stage.", "w1_t": "Caring approach", "w1_p": "A calm, stress-free and loving examination environment.", "w2_t": "Clear communication", "w2_p": "We explain diagnosis and treatment in plain language.", "w3_t": "Easy to reach", "w3_p": "Centrally located in İskenderpaşa, Fatih.", "w4_t": "Quick appointments", "w4_p": "Reach us in seconds by phone or WhatsApp.", "c_h2": "Get in touch", "c_lead": "Call us or message us on WhatsApp for appointments and questions.", "lbl_addr": "Address", "addr": "İskenderpaşa Mah. Macar Kardeşler Cad. No: 15<br>34083 Fatih / Istanbul", "lbl_phone": "Phone", "lbl_hours": "Opening Hours", "btn_dir": "Get Directions", "foot": "© <span id=\"yr\"></span> Fatih Veterinary Clinic · İskenderpaşa, Fatih / Istanbul" }, AR = { "nav_services": "الخدمات", "nav_why": "لماذا نحن؟", "nav_contact": "تواصل معنا", "nav_call": "اتصل", "h_tag": "إسكندر باشا · الفاتح / إسطنبول", "h_h1": "رعاية موثوقة وحنونة لصديقك المفضل.", "h_p": "من الفحص واللقاحات إلى الطب الوقائي والجراحة، نحن بجانبكم للعناية بصحة قطتكم وكلبكم وسائر حيواناتكم الأليفة.", "btn_call": "اتصل الآن", "btn_wa": "راسلنا عبر واتساب", "h_name": "عيادة فاتح البيطرية", "hours": "يوميًا من 08:00 إلى 00:00", "s_tag": "خدماتنا", "s_h2": "كل ما يحتاجه حيوانك الأليف", "s_lead": "من الفحوصات الدورية إلى التدخلات العاجلة، نحن معكم في كل خطوة.", "c1_t": "فحص عام", "c1_p": "فحوصات صحية دورية وتشخيص مبكر لاكتشاف المشكلات قبل أن تتفاقم.", "c2_t": "اللقاحات والطب الوقائي", "c2_p": "جداول التطعيم، وعلاجات الطفيليات الداخلية والخارجية، وزراعة الشريحة الإلكترونية.", "c3_t": "المختبر والتشخيص", "c3_p": "تحاليل الدم والبول للوصول إلى التشخيص الصحيح بسرعة.", "c4_t": "الجراحة والعلاج", "c4_p": "عمليات التعقيم والجراحات العامة مع المتابعة بعد العلاج.", "c5_t": "صحة الفم والأسنان", "c5_p": "إزالة الجير والعناية بالفم لابتسامة صحية.", "c6_t": "استشارات التغذية", "c6_p": "توصيات الخبراء لنظام غذائي يناسب عمر حيوانك وسلالته.", "w_h2": "حيوانات بصحة جيدة، <span>وعائلات سعيدة.</span>", "w_lead": "نعامل كل صديق صغير كأنه فرد من عائلتنا، ونُبقي أصحابه على اطلاع في كل مرحلة.", "w1_t": "رعاية حانية", "w1_p": "أجواء فحص هادئة ومريحة ومليئة بالحب.", "w2_t": "تواصل واضح", "w2_p": "نشرح التشخيص وخطة العلاج بلغة بسيطة.", "w3_t": "سهولة الوصول", "w3_p": "موقع مركزي في إسكندر باشا بمنطقة الفاتح.", "w4_t": "حجز سريع", "w4_p": "تواصلوا معنا في ثوانٍ عبر الهاتف أو واتساب.", "c_h2": "تواصلوا معنا", "c_lead": "اتصلوا بنا أو راسلونا عبر واتساب لحجز موعد أو لأي استفسار.", "lbl_addr": "العنوان", "addr": "حي İskenderpaşa، شارع Macar Kardeşler، رقم 15<br>34083 الفاتح / إسطنبول", "lbl_phone": "الهاتف", "lbl_hours": "ساعات العمل", "btn_dir": "احصل على الاتجاهات", "foot": "© <span id=\"yr\"></span> عيادة فاتح البيطرية · إسكندر باشا، الفاتح / إسطنبول" };
+            var EN = { "nav_services": "Services", "nav_why": "Why Us?", "nav_contact": "Contact", "nav_call": "Call", "h_tag": "İskenderpaşa · Fatih / Istanbul", "h_h1": "Trusted and compassionate care for your best friend.", "h_p": "From check-ups and vaccinations to preventive care and surgery, we're here for the health of your cat, dog and other pets.", "btn_call": "Call Now", "btn_wa": "Message on WhatsApp", "hours": "Every day 08:00 – 00:00", "s_tag": "Our Services", "s_h2": "Everything your pet needs", "s_lead": "From routine check-ups to urgent care, we're with you every step of the way.", "c1_t": "General Check-up", "c1_p": "Regular health check-ups and early diagnosis catch problems before they grow.", "c2_t": "Vaccination & Preventive Care", "c2_p": "Vaccination schedules, internal and external parasite treatments, and microchipping.", "c3_t": "Laboratory & Diagnostics", "c3_p": "Blood and urine tests for fast, accurate diagnosis.", "c4_t": "Surgery & Treatment", "c4_p": "Neutering and general surgical procedures, with follow-up care after treatment.", "c5_t": "Oral & Dental Health", "c5_p": "Tartar cleaning and oral care for a healthy smile.", "c6_t": "Nutrition Advice", "c6_p": "Expert recommendations for a diet plan suited to your pet's age and breed.", "w_h2": "Healthy paws, <span>happy families.</span>", "w_lead": "We treat every furry friend like a member of our own family and keep owners informed at every stage.", "w1_t": "Caring approach", "w1_p": "A calm, stress-free and loving examination environment.", "w2_t": "Clear communication", "w2_p": "We explain diagnosis and treatment in plain language.", "w3_t": "Easy to reach", "w3_p": "Centrally located in İskenderpaşa, Fatih.", "w4_t": "Quick appointments", "w4_p": "Reach us in seconds by phone or WhatsApp.", "c_h2": "Get in touch", "c_lead": "Call us or message us on WhatsApp for appointments and questions.", "lbl_addr": "Address", "addr": "İskenderpaşa Mah. Macar Kardeşler Cad. No: 15<br>34083 Fatih / Istanbul", "lbl_phone": "Phone", "lbl_hours": "Opening Hours", "btn_dir": "Get Directions", "foot": "© <span id=\"yr\"></span> Fatih Veterinary Clinic · İskenderpaşa, Fatih / Istanbul" }, AR = { "nav_services": "الخدمات", "nav_why": "لماذا نحن؟", "nav_contact": "تواصل معنا", "nav_call": "اتصل", "h_tag": "إسكندر باشا · الفاتح / إسطنبول", "h_h1": "رعاية موثوقة وحنونة لصديقك المفضل.", "h_p": "من الفحص واللقاحات إلى الطب الوقائي والجراحة، نحن بجانبكم للعناية بصحة قطتكم وكلبكم وسائر حيواناتكم الأليفة.", "btn_call": "اتصل الآن", "btn_wa": "راسلنا عبر واتساب", "hours": "يوميًا من 08:00 إلى 00:00", "s_tag": "خدماتنا", "s_h2": "كل ما يحتاجه حيوانك الأليف", "s_lead": "من الفحوصات الدورية إلى التدخلات العاجلة، نحن معكم في كل خطوة.", "c1_t": "فحص عام", "c1_p": "فحوصات صحية دورية وتشخيص مبكر لاكتشاف المشكلات قبل أن تتفاقم.", "c2_t": "اللقاحات والطب الوقائي", "c2_p": "جداول التطعيم، وعلاجات الطفيليات الداخلية والخارجية، وزراعة الشريحة الإلكترونية.", "c3_t": "المختبر والتشخيص", "c3_p": "تحاليل الدم والبول للوصول إلى التشخيص الصحيح بسرعة.", "c4_t": "الجراحة والعلاج", "c4_p": "عمليات التعقيم والجراحات العامة مع المتابعة بعد العلاج.", "c5_t": "صحة الفم والأسنان", "c5_p": "إزالة الجير والعناية بالفم لابتسامة صحية.", "c6_t": "استشارات التغذية", "c6_p": "توصيات الخبراء لنظام غذائي يناسب عمر حيوانك وسلالته.", "w_h2": "حيوانات بصحة جيدة، <span>وعائلات سعيدة.</span>", "w_lead": "نعامل كل صديق صغير كأنه فرد من عائلتنا، ونُبقي أصحابه على اطلاع في كل مرحلة.", "w1_t": "رعاية حانية", "w1_p": "أجواء فحص هادئة ومريحة ومليئة بالحب.", "w2_t": "تواصل واضح", "w2_p": "نشرح التشخيص وخطة العلاج بلغة بسيطة.", "w3_t": "سهولة الوصول", "w3_p": "موقع مركزي في إسكندر باشا بمنطقة الفاتح.", "w4_t": "حجز سريع", "w4_p": "تواصلوا معنا في ثوانٍ عبر الهاتف أو واتساب.", "c_h2": "تواصلوا معنا", "c_lead": "اتصلوا بنا أو راسلونا عبر واتساب لحجز موعد أو لأي استفسار.", "lbl_addr": "العنوان", "addr": "حي İskenderpaşa، شارع Macar Kardeşler، رقم 15<br>34083 الفاتح / إسطنبول", "lbl_phone": "الهاتف", "lbl_hours": "ساعات العمل", "btn_dir": "احصل على الاتجاهات", "foot": "© <span id=\"yr\"></span> عيادة فاتح البيطرية · إسكندر باشا، الفاتح / إسطنبول" };
             var ME = { "title": "Fatih Veterinary Clinic", "desc": "Fatih Veterinary Clinic: check-ups, vaccinations, surgery and preventive care for your cats, dogs and other pets. İskenderpaşa, Fatih / Istanbul. Call us or message us on WhatsApp.", "ogd": "Trusted veterinary care for your pets. İskenderpaşa, Fatih / Istanbul.", "brand": "Fatih Veterinary Clinic home", "menu": "Open menu", "navl": "Main menu", "wa": "Message us on WhatsApp", "logo": "Fatih Veterinary Clinic logo", "name2": "Fatih Veterinary Clinic", "map": "Location of Fatih Veterinary Clinic", "wa1": "Hello, I would like to make an appointment.", "wa2": "Hello, I would like some information." }, MA = { "title": "عيادة فاتح البيطرية", "desc": "عيادة فاتح البيطرية: فحص وتطعيم وجراحة ورعاية وقائية للقطط والكلاب وسائر الحيوانات الأليفة. إسكندر باشا، الفاتح / إسطنبول. اتصلوا بنا أو راسلونا عبر واتساب.", "ogd": "خدمة بيطرية موثوقة لحيواناتكم الأليفة. إسكندر باشا، الفاتح / إسطنبول.", "brand": "الصفحة الرئيسية لعيادة فاتح البيطرية", "menu": "افتح القائمة", "navl": "القائمة الرئيسية", "wa": "راسلنا عبر واتساب", "logo": "شعار عيادة فاتح البيطرية", "name2": "عيادة فاتح البيطرية", "map": "موقع عيادة فاتح البيطرية", "wa1": "مرحبًا، أود حجز موعد.", "wa2": "مرحبًا، أود الاستفسار." };
             var els = document.querySelectorAll('[data-i18n]'), TR = {};
             els.forEach(function (e) { TR[e.getAttribute('data-i18n')] = e.innerHTML; });
